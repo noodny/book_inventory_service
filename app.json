@@ -1,0 +1,10 @@
+{
+  "name": "book_inventory_service",
+  "scripts": {
+  },
+  "env": {
+  },
+  "addons": [
+    "mongolab"
+  ]
+}
