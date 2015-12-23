@@ -3,6 +3,7 @@ module.exports = function(options) {
 
     var express = require('express');
     var parser = require('body-parser');
+    var cors = require('cors');
 
     var middlewares = require('./middlewares');
 
@@ -11,6 +12,7 @@ module.exports = function(options) {
     var stockRepository = options.stockRepository || require('./repositories/mongo/stock');
     var stockRoutes = require('./routes/stock')(stockRepository);
 
+    app.use(cors());
     app.use(parser.json());
 
     if(process.env.NODE_ENV !== 'production') {
