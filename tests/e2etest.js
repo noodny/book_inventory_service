@@ -39,6 +39,7 @@ describe('GET /stock/:id', function() {
     it('should fetch an item', function(done) {
         request(app)
             .get('/stock/12345')
+            .set('accept', 'application/json')
             .expect('Content-Type', /json/)
             .expect(function(res) {
                 if(!res.body) {
