@@ -52,3 +52,18 @@ describe('GET /stock/:id', function() {
             .expect(200, done);
     });
 });
+
+describe('GET /stock/:id', function() {
+    it('should fetch an item in html format', function(done) {
+        request(app)
+            .get('/stock/12345')
+            .set('accept', 'text/html')
+            .expect('Content-Type', /html/)
+            .expect(function(res) {
+                if(!res.body) {
+                    throwError('has no body');
+                }
+            })
+            .expect(200, done);
+    });
+});
