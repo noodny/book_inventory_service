@@ -24,7 +24,14 @@ module.exports = function(repository) {
                 .fetchOne(book)
                 .then(function(result) {
                     if(result) {
-                        res.status(200).json(result);
+                        res.format({
+                            'text/html': function() {
+                                res.send('<div>' + result.count + ' copies left</div>');
+                            },
+                            'default': function() {
+                                res.status(200).json(result);
+                            }
+                        });
                     } else {
                         next();
                     }
